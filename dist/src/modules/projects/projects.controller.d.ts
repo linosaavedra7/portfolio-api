@@ -1,0 +1,82 @@
+import { ProjectsService } from './projects.service';
+import { CreateProjectDto } from './dto/create-project.dto';
+import { UpdateProjectDto } from './dto/update-project.dto';
+export declare class ProjectsController {
+    private readonly projectsService;
+    constructor(projectsService: ProjectsService);
+    findAll(): import("@prisma/client").Prisma.PrismaPromise<{
+        tags: string[];
+        description: string;
+        title: string;
+        longDescription: string | null;
+        imageUrl: string | null;
+        githubUrl: string | null;
+        liveUrl: string | null;
+        featured: boolean;
+        order: number;
+        id: string;
+        published: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+    }[]>;
+    findOne(id: string): Promise<{
+        tags: string[];
+        description: string;
+        title: string;
+        longDescription: string | null;
+        imageUrl: string | null;
+        githubUrl: string | null;
+        liveUrl: string | null;
+        featured: boolean;
+        order: number;
+        id: string;
+        published: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
+    create(dto: CreateProjectDto): import("@prisma/client").Prisma.Prisma__ProjectClient<{
+        tags: string[];
+        description: string;
+        title: string;
+        longDescription: string | null;
+        imageUrl: string | null;
+        githubUrl: string | null;
+        liveUrl: string | null;
+        featured: boolean;
+        order: number;
+        id: string;
+        published: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+    }, never, import("@prisma/client/runtime/client").DefaultArgs, import("@prisma/client").Prisma.PrismaClientOptions>;
+    update(id: string, dto: UpdateProjectDto): Promise<{
+        tags: string[];
+        description: string;
+        title: string;
+        longDescription: string | null;
+        imageUrl: string | null;
+        githubUrl: string | null;
+        liveUrl: string | null;
+        featured: boolean;
+        order: number;
+        id: string;
+        published: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
+    remove(id: string): Promise<{
+        tags: string[];
+        description: string;
+        title: string;
+        longDescription: string | null;
+        imageUrl: string | null;
+        githubUrl: string | null;
+        liveUrl: string | null;
+        featured: boolean;
+        order: number;
+        id: string;
+        published: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
+}
