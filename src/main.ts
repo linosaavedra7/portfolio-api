@@ -36,19 +36,21 @@ async function bootstrap() {
   app.useGlobalFilters(new GlobalExceptionFilter());
   app.useGlobalInterceptors(new ResponseInterceptor());
 
-  const swaggerConfig = new DocumentBuilder()
-    .setTitle('Portfolio API')
-    .setDescription('API REST del portfolio profesional')
-    .setVersion('1.0')
-    .addBearerAuth()
-    .build();
+  if (process.env.NODE_ENV !== 'production') {
+    const swaggerConfig = new DocumentBuilder()
+      .setTitle('Portfolio API')
+      .setDescription('API REST del portfolio profesional')
+      .setVersion('1.0')
+      .addBearerAuth()
+      .build();
 
-  const document = SwaggerModule.createDocument(app, swaggerConfig);
-  SwaggerModule.setup('api/docs', app, document);
+    const document = SwaggerModule.createDocument(app, swaggerConfig);
+    SwaggerModule.setup('api/docs', app, document);
+    console.log(`📚 Swagger docs at http://localhost:${port}/api/docs`);
+  }
 
   await app.listen(port);
   console.log(`🚀 API running on http://localhost:${port}/api/v1`);
-  console.log(`📚 Swagger docs at http://localhost:${port}/api/docs`);
 }
 
 bootstrap();
